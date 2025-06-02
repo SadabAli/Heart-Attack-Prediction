@@ -1,0 +1,60 @@
+schema: '2.0'
+stages:
+  preprocess:
+    cmd: python src/preprocess.py
+    deps:
+    - path: data/raw/Medicaldataset.csv
+      hash: md5
+      md5: 847f95b20f77a1bc868e471421d8feb2
+      size: 52355
+    - path: src/preprocess.py
+      hash: md5
+      md5: 6d7e4901f18889a06ff8aa2c29e7b174
+      size: 1207
+    params:
+      params.yaml:
+        preprocess.input: data/raw/Medicaldataset.csv
+        preprocess.output: data/preprocess/Medicaldataset.csv
+    outs:
+    - path: data/preprocess/Medicaldataset.csv
+      hash: md5
+      md5: a1cf6d9a1a2fb237cd3de052746e3c87
+      size: 192659
+  train:
+    cmd: python src/train.py
+    deps:
+    - path: data/preprocess/Medicaldataset.csv
+      hash: md5
+      md5: a1cf6d9a1a2fb237cd3de052746e3c87
+      size: 192659
+    - path: src/train.py
+      hash: md5
+      md5: 1c65a90bd40bc55b0fdd588f5dd3dc8c
+      size: 3196
+    params:
+      params.yaml:
+        train.data: data/preprocess/Medicaldataset.csv
+        train.max_depth: 5
+        train.model: model/model.pkl
+        train.n_estimator: 100
+        train.random_state: 42
+    outs:
+    - path: model/model.pkl
+      hash: md5
+      md5: a849dd6c3e30a2cc95d5b83faafc542b
+      size: 560597
+  evaluate:
+    cmd: python src/evaluate.py
+    deps:
+    - path: data/preprocess/Medicaldataset.csv
+      hash: md5
+      md5: a1cf6d9a1a2fb237cd3de052746e3c87
+      size: 192659
+    - path: model/model.pkl
+      hash: md5
+      md5: a849dd6c3e30a2cc95d5b83faafc542b
+      size: 560597
+    - path: src/evaluate.py
+      hash: md5
+      md5: 30a1c82884335e44c254dac38eda8b46
+      size: 1570

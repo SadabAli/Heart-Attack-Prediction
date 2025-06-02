@@ -1,0 +1,13 @@
+preprocess :
+  input : data/raw/Medicaldataset.csv
+  output : data/preprocess/Medicaldataset.csv
+
+train:
+  data : data/preprocess/Medicaldataset.csv
+  model : model/model.pkl
+  random_state: 42 
+  n_estimator: 100 
+  max_depth: 5
+
+evaluate:
+  target_col: Result

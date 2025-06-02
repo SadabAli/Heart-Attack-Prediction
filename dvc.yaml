@@ -1,0 +1,32 @@
+stages:
+  preprocess:
+    cmd: python src/preprocess.py
+    deps:
+      - data/raw/Medicaldataset.csv
+      - src/preprocess.py
+    params:
+      - preprocess.input
+      - preprocess.output
+    outs:
+      - data/preprocess/Medicaldataset.csv  # ✅ Corrected
+
+  train:
+    cmd: python src/train.py
+    deps:
+      - data/preprocess/Medicaldataset.csv  # ✅ Uses preprocessed data now
+      - src/train.py
+    params:
+      - train.data
+      - train.model
+      - train.random_state
+      - train.n_estimator
+      - train.max_depth
+    outs:
+      - model/model.pkl  # ✅ Matches params.yaml
+
+  evaluate:
+    cmd: python src/evaluate.py
+    deps:
+      - data/preprocess/Medicaldataset.csv  # ✅ Use processed data
+      - model/model.pkl
+      - src/evaluate.py
