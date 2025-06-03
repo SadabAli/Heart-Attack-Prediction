@@ -55,6 +55,8 @@ Tuned Hyperparameters:
 
 ### Metrics:
 
+![Screenshot 2025-06-03 202817](https://github.com/user-attachments/assets/acc1cca9-f5d7-409c-8992-6f78427c64d1)
+
 
 ### MLflow + Dagshub
 All experiments and metrics are tracked on MLflow, hosted via Dagshub.
@@ -65,7 +67,7 @@ https://dagshub.com/SadabAli/MachinrLerningPipeline.mlflow
 
 ### 🖼️ Pipeline Visualization
 
-![Pipeline](C:\Users\alisa\OneDrive\Desktop\HartAttack DataSet\Heart-Attack-Prediction\image\Screenshot 2025-06-03 202858.png)
+![Screenshot 2025-06-03 202858](https://github.com/user-attachments/assets/35cd80b5-5bce-46cd-b3d0-a6db68d15d82)
 
 ### 🛠️ Setup & Run
 1.Clone the repo:
